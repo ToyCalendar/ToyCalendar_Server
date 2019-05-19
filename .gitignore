@@ -59,3 +59,35 @@ typings/
 
 # next.js build output
 .next
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+
+# custom
+db.config.js
+
+# vscode 제거
+.vscode/
+
+# .idea 제거
+.idea/
+
+# dist 제거
+dist/
