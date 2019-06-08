@@ -7,6 +7,22 @@ import { Response, Request, NextFunction } from "express";
 import * as calendar from "../dump/calendar";
 import * as secretInfo from "../dump/secretInfo";
 
+import "../util/mysql";
+
+import express from "express";
+import { MySQL } from "../util/mysql";
+
+const mysql = new MySQL();
+
+export const selectAllSecretInfo = (
+  callback: (err: any, result: any) => void
+) => {
+  return mysql.requestQuery("select * from secrection", async callback => {
+    console.log("CALL_BACK", callback);
+    return callback;
+  });
+};
+
 /**
  * GET /api
  * List of API examples.
@@ -53,5 +69,10 @@ export const readSecretInfo = (
   res: Response,
   next: NextFunction
 ) => {
-  res.send(secretInfo.secretInfo);
+  mysql.requestQuery("select * from secrection", async (err, result) => {
+    res.send({
+      contents: result
+    });
+  });
+  // res.send(secretInfo.secretInfo);
 };

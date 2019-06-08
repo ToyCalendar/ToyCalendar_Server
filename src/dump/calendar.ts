@@ -1,4 +1,4 @@
-import { CalendarVO, SecretCode, SecretName } from "../models/Calendar";
+import { CalendarVO, SecretCode, SecretName } from "../models/calendar";
 
 export const calendar: CalendarVO = {
   code: 200,
