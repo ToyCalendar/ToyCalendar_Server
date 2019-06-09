@@ -82,7 +82,7 @@ jspm_packages/
 
 # custom
 db.config.js
-./config/mysql.ts
+src/config/mysql.ts
 
 # vscode 제거
 .vscode/
