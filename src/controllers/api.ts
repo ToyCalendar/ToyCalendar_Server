@@ -69,10 +69,12 @@ export const readSecretInfo = (
   res: Response,
   next: NextFunction
 ) => {
+  mysql.connect();
   mysql.requestQuery("select * from secrection", async (err, result) => {
     res.send({
+      code: 200,
       contents: result
     });
   });
-  // res.send(secretInfo.secretInfo);
+  mysql.dispose();
 };

@@ -21,8 +21,6 @@ export class MySQL {
       password: config.config.mysql_dev.password,
       database: config.config.mysql_dev.database
     });
-
-    this.connect();
   }
 
   connect = async () => {
