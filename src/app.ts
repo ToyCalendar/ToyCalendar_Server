@@ -145,6 +145,8 @@ app.get(
 );
 app.get("/api/calendar", apiController.readCalendarInfoList);
 app.get("/api/secretInfo", middleWhere.checkAuth, apiController.readSecretInfo);
+app.post("/api/signIn", middleWhere.checkAuth, middleWhere.readUser);
+app.post("/api/saveMenstruation", middleWhere.checkAuth, apiController.saveMenstruation);
 
 /**
  * OAuth authentication routes. (Sign in)

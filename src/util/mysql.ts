@@ -9,6 +9,7 @@ export class MySQL {
   static getInstance(): MySQL {
     if (!MySQL.instance) {
       MySQL.instance = new MySQL();
+      MySQL.instance.connect();
     }
 
     return MySQL.instance;
@@ -26,6 +27,7 @@ export class MySQL {
   connect = async () => {
     try {
       await this.connection.connect();
+      console.log("MySQL Connect Success");
     } catch {
       console.error("MySQL Connection Error");
     }
@@ -36,11 +38,12 @@ export class MySQL {
   };
 
   requestQuery = async (
+    callback: (err: any | null, result?: any | null) => void,
     query: string,
-    callback: (err: any | null, result?: any | null) => void
+    values?: any
   ) => {
     try {
-      await this.connection.query(query, (err, result) => {
+      await this.connection.query(query, values, (err, result) => {
         if (err) {
           return callback(err);
         }
