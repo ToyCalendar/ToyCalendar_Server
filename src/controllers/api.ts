@@ -6,6 +6,8 @@ import graph from "fbgraph";
 import { Response, Request, NextFunction } from "express";
 import * as calendar from "../dump/calendar";
 import * as secretInfo from "../dump/secretInfo";
+import * as moment from "moment";
+require("moment-timezone");
 
 import "../util/mysql";
 
@@ -92,18 +94,29 @@ export const saveMenstruation = (
 ) => {
   const id = req.user.id;
 
+  // 생리 기간
+  const startMenstruationDate: Date =
+    req.body.menstruation.startMenstruationDate || null;
+  const endMenstruationDate: Date =
+    req.body.menstruation.endMenstruationDate || null;
+
   // 평균 생리 기간
+  // 평균 생리 기간을 사용할 경우 start나 end는 null 들어오기 때문에 5로 저장한다.
   const everageTermYn: boolean = req.body.menstruation.everageTermYn; // 평균 생리 기간 = 5
-  const everageTermStart: Date = req.body.menstruation.everageTermStart;
-  const everageTermEnd: Date = req.body.menstruation.everageTermEnd;
+  const everageTermStart: Date = req.body.menstruation.everageTermStart || 5;
+  const everageTermEnd: Date = req.body.menstruation.everageTermEnd || 5;
 
   // 평균 생리 주기
+  // 평균 생리 주기를 사용할 경우 start나 end는 null 들어오기 때문에 28로 저장한다.
   const everageCycleYn: boolean = req.body.menstruation.everageCycleYn; // 평균 생리 주기 28
-  const everageCycleStart: Date = req.body.menstruation.everageCycleStart;
-  const everageCycleEnd: Date = req.body.menstruation.everageCycleEnd;
+  const everageCycleStart: Date = req.body.menstruation.everageCycleStart || 28;
+  const everageCycleEnd: Date = req.body.menstruation.everageCycleEnd || 28;
 
   const query =
-    "insert into menstruationMethod (userId, everageTermYn, everageTermStart, everageTermEnd, everageCycleYn, everageCycleStart, everageCycleEnd) values(?,?,?,?,?,?,?)";
+    "insert into menstruationMethod (userId, everageTermYn, everageTermStart, everageTermEnd, everageCycleYn, everageCycleStart, everageCycleEnd) values(?);" +
+    "insert into menstruation (userId, startmenstruationDate, endMenstruationDate) values(?);";
+
+  // const query = `begin;insert into menstruation (userId, startMenstruationDate, endMenstruationDate) values (${id}, ${startMenstruationDate}, ${endMenstruationDate});insert into menstruationMethod (userId, everageTermYn, everageTermStart, everageTermEnd, everageCycleYn, everageCycleStart, everageCycleEnd) values(${id},  ${everageTermYn}, ${everageTermStart}, ${everageTermEnd}, ${everageCycleYn}, ${everageCycleStart}, ${everageCycleEnd});commit;`;
 
   mysql.requestQuery(
     async (err, result) => {
@@ -123,13 +136,20 @@ export const saveMenstruation = (
     },
     query,
     [
-      id,
-      everageTermYn,
-      everageTermStart,
-      everageTermEnd,
-      everageCycleYn,
-      everageCycleStart,
-      everageCycleEnd
+      [
+        id,
+        everageTermYn,
+        everageTermStart,
+        everageTermEnd,
+        everageCycleYn,
+        everageCycleStart,
+        everageCycleEnd
+      ],
+      [
+        id,
+        startMenstruationDate,
+        endMenstruationDate
+      ]
     ]
   );
 };

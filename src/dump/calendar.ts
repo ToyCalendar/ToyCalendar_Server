@@ -1,4 +1,4 @@
-import { CalendarVO, SecretCode, SecretName } from "../models/calendar";
+import { CalendarVO, SecretCode, SecretName, DayType, DayPoint } from "../models/calendar";
 
 export const calendar: CalendarVO = {
   code: 200,
@@ -23,14 +23,8 @@ export const calendar: CalendarVO = {
             secretInfoName: SecretName.DRY
           }
         ],
-        physiologyCycleYn: true,
-        physiologyStartYn: false,
-        physiologyEndYn: false,
-        ovulationCycleYn: false,
-        ovulationDayYn: false,
-        ovulationStartYn: false,
-        ovulationEndYn: false,
-        dayPoint: 2
+        dayType: DayType.PHY_CYCLE,
+        dayPoint: DayPoint.FUTURE
       },
       {
         date: new Date(1546425385158),
@@ -50,14 +44,8 @@ export const calendar: CalendarVO = {
             secretInfoName: SecretName.DRY
           }
         ],
-        physiologyCycleYn: true,
-        physiologyStartYn: false,
-        physiologyEndYn: false,
-        ovulationCycleYn: false,
-        ovulationDayYn: false,
-        ovulationStartYn: false,
-        ovulationEndYn: false,
-        dayPoint: 2
+        dayType: DayType.PHY_CYCLE,
+        dayPoint: DayPoint.FUTURE
       },
       {
         date: new Date(1546511785158),
@@ -77,14 +65,8 @@ export const calendar: CalendarVO = {
             secretInfoName: SecretName.DRY
           }
         ],
-        physiologyCycleYn: true,
-        physiologyStartYn: false,
-        physiologyEndYn: false,
-        ovulationCycleYn: false,
-        ovulationDayYn: false,
-        ovulationStartYn: false,
-        ovulationEndYn: false,
-        dayPoint: 2
+        dayType: DayType.PHY_CYCLE,
+        dayPoint: DayPoint.FUTURE
       }
     ],
     partner: [
@@ -106,14 +88,8 @@ export const calendar: CalendarVO = {
             secretInfoName: SecretName.DRY
           }
         ],
-        physiologyCycleYn: true,
-        physiologyStartYn: false,
-        physiologyEndYn: false,
-        ovulationCycleYn: false,
-        ovulationDayYn: false,
-        ovulationStartYn: false,
-        ovulationEndYn: false,
-        dayPoint: 2
+        dayType: DayType.PHY_CYCLE,
+        dayPoint: DayPoint.FUTURE
       },
       {
         date: new Date(1546425385158),
@@ -133,14 +109,8 @@ export const calendar: CalendarVO = {
             secretInfoName: SecretName.DRY
           }
         ],
-        physiologyCycleYn: true,
-        physiologyStartYn: false,
-        physiologyEndYn: false,
-        ovulationCycleYn: false,
-        ovulationDayYn: false,
-        ovulationStartYn: false,
-        ovulationEndYn: false,
-        dayPoint: 2
+        dayType: DayType.PHY_CYCLE,
+        dayPoint: DayPoint.FUTURE
       },
       {
         date: new Date(1546511785158),
@@ -160,14 +130,8 @@ export const calendar: CalendarVO = {
             secretInfoName: SecretName.DRY
           }
         ],
-        physiologyCycleYn: true,
-        physiologyStartYn: false,
-        physiologyEndYn: false,
-        ovulationCycleYn: false,
-        ovulationDayYn: false,
-        ovulationStartYn: false,
-        ovulationEndYn: false,
-        dayPoint: 2
+        dayType: DayType.PHY_CYCLE,
+        dayPoint: DayPoint.FUTURE
       }
     ]
   }

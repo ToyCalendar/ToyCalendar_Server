@@ -1,3 +1,5 @@
+"use strict";
+
 import * as config from "../config/mysql";
 import mysql from "mysql";
 
@@ -20,7 +22,8 @@ export class MySQL {
       host: config.config.mysql_dev.host,
       user: config.config.mysql_dev.username,
       password: config.config.mysql_dev.password,
-      database: config.config.mysql_dev.database
+      database: config.config.mysql_dev.database,
+      multipleStatements: true
     });
   }
 
@@ -39,11 +42,12 @@ export class MySQL {
 
   requestQuery = async (
     callback: (err: any | null, result?: any | null) => void,
-    query: string,
-    values?: any
+    query: string | null,
+    values?: any | null
   ) => {
     try {
       await this.connection.query(query, values, (err, result) => {
+        console.log("query", query, "value", values);
         if (err) {
           return callback(err);
         }
