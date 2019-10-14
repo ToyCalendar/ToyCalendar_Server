@@ -1,5 +1,5 @@
 import { SecretInfoVO } from "..//models/secretInfo";
-import { SecretCode, SecretName } from "../models/Calendar";
+import { SecretCode, SecretName } from "../models/calendar";
 
 export const secretInfo: SecretInfoVO = {
   code: 200,
