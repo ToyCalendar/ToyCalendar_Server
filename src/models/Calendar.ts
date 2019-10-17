@@ -1,4 +1,4 @@
-import CommonVO from "./common";
+import CommonVO from "./Common";
 export interface CalendarVO extends CommonVO {
   data: CalendarMyOnPartnerVO;
 }

@@ -1,5 +1,5 @@
-import { SecretCode, SecretName } from "./calendar";
-import CommonVO from "./common";
+import { SecretCode, SecretName } from "./Calendar";
+import CommonVO from "./Common";
 
 export interface SecretInfoVO extends CommonVO {
   data: SecretResourceVO[];
